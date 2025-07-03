@@ -1,59 +1,55 @@
-# ExamenParcial6MariaJose
+<h1 align="center"> ExamenParcial6_MariaJose </h1> 
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.4.
+## ✅ Descripción
+Este es el frontend del proyecto de lista de tareas personales, construido con Angular, diseñado para interactuar con una API REST desarrollada en .NET Core llamada API_ExamenParcial6_MariaJose. 
+Permite ver, crear, editar, completar y eliminar tareas. El diseño está orientado a la simplicidad y experiencia de usuario, con una tabla estilizada y formularios dinámicos.
 
-## Development server
+## :hammer: Funcionamiento
 
-To start a local development server, run:
+- **Tabla:** Se encuenta una tabla donde se muestre el id, el titulo, la descripción, la fecha limite, el estado y la prioridad de cada tarea.
 
-```bash
-ng serve
-```
+    💭 El esatdo puede ser completada o pendiente.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+    💭 Las prioridades son 1 = Alta, 2 = Media, 3 = Baja.
 
-## Code scaffolding
+- ✅ **Completar tarea:** Permite cambiar el estado de pediente a completada.
+- 🗑️ **Eliminar tarea:** Permite eliminar la tarea.
+- ✏️ **Editar tarea:** Abre un formulario que te permite editar elemetos de una tarea como el  el titulo, la descripción, la fecha limite  o la prioridad.
+- **Crear tarea:** Se da al boton +Nueva Tarea y este desplegara un modal con un formulario con los elementos para ingresar una nueva tarea: titulo,descripción,fecha limite y la prioridad.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 🌐 Tecnologías Utilizadas
+- Angular
+- Bootstrap (íconos y estilos)
+- Servicios HTTP (HttpClient)
 
-```bash
-ng generate component component-name
-```
+## 💡 Componentes
+- `TareasComponent`: Componente principal que contiene el formulario para agregar o editar tareas y el modal. También se encarga de cargar todas las tareas y manejar las acciones del usuario.
+- `TaskListComponent`: Tabla que muestra las tareas. Emite eventos para completar, eliminar o editar una tarea.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 🔌 Conexión con la API
+- private apiUrl = 'https://localhost:7192/api/Tareas';
 
-```bash
-ng generate --help
-```
+## 📷 Capturas de pantalla 
 
-## Building
+Captura de la lista de tareas 
+![Captura Lista Tareas Angular Examen](https://github.com/user-attachments/assets/1bf963d7-1b6b-4933-8d34-5e1f0341b35f)
 
-To build the project run:
 
-```bash
-ng build
-```
+Captura de formulario de creación de tareas
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+![Captura Crear Tarea Angular Examen](https://github.com/user-attachments/assets/845f9557-ab49-48fa-9bb1-ff76a112580f)
 
-## Running unit tests
+Captura de formulario de editar de tareas
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+![Captura Editar Tarea Angular Examen](https://github.com/user-attachments/assets/b23ac514-a1fe-4a10-b776-78d4d3bea36f)
 
-```bash
-ng test
-```
+Demostración de cómo se marca una tarea como completada
 
-## Running end-to-end tests
+![Captura  Tarea Pendiente Angular Examen](https://github.com/user-attachments/assets/231a9e06-d0af-4153-bf5f-f7f942f2cdb0)
 
-For end-to-end (e2e) testing, run:
+![Captura  Tarea Completada Angular Examen](https://github.com/user-attachments/assets/4f09c494-5516-438a-9510-ff1adb58ac08)
 
-```bash
-ng e2e
-```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
 
-## Additional Resources
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
