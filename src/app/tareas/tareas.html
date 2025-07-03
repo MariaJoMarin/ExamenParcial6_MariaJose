@@ -1,0 +1,80 @@
+<!-- Botón para abrir el modal con margen y estilo mejorado -->
+<div style="margin-bottom: 20px;">
+  <button (click)="mostrarModal = true"
+    style="padding: 10px 20px;
+           font-size: 15px;
+           background-color: #198754;
+           border: none;
+           border-radius: 6px;
+           color: white;
+           cursor: pointer;
+           transition: background-color 0.2s ease;">
+    + Nueva tarea
+  </button>
+</div>
+
+<!-- Fondo oscuro -->
+<div *ngIf="mostrarModal">
+  <div style="
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 999;
+  " (click)="mostrarModal = false"></div>
+
+  <!-- Modal centrado con estilos elegantes -->
+  <div style="
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    padding: 32px;
+    width: 90%;
+    max-width: 520px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    z-index: 1000;
+  " (click)="$event.stopPropagation()">
+
+    <h3 style="margin-top: 0; margin-bottom: 24px; font-size: 22px; font-weight: 600; text-align: center;">
+      {{ modoEdicion ? 'Editar tarea' : 'Agregar tarea' }}
+    </h3>
+
+    <form (ngSubmit)="modoEdicion ? actualizarTarea() : agregarTarea()">
+      <input type="text" [(ngModel)]="nuevaTarea.titulo" name="titulo" placeholder="Título" required
+        style="width: 100%; padding: 10px; margin-bottom: 16px; font-size: 15px; border: 1px solid #ccc; border-radius: 6px;" />
+
+      <input type="text" [(ngModel)]="nuevaTarea.descripcion" name="descripcion" placeholder="Descripción" required
+        style="width: 100%; padding: 10px; margin-bottom: 16px; font-size: 15px; border: 1px solid #ccc; border-radius: 6px;" />
+
+      <input type="date" [(ngModel)]="nuevaTarea.fechaLimite" name="fechaLimite" required
+        style="width: 100%; padding: 10px; margin-bottom: 16px; font-size: 15px; border: 1px solid #ccc; border-radius: 6px;" />
+
+      <select [(ngModel)]="nuevaTarea.prioridad" name="prioridad" required
+        style="width: 100%; padding: 10px; margin-bottom: 16px; font-size: 15px; border: 1px solid #ccc; border-radius: 6px;">
+        <option [value]="1">Alta</option>
+        <option [value]="2">Media</option>
+        <option [value]="3">Baja</option>
+      </select>
+
+      <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 20px;">
+        <button type="submit"
+          style="padding: 10px 18px; font-size: 14px; border: none; border-radius: 6px; cursor: pointer; background-color: #007bff; color: white;">
+          {{ modoEdicion ? 'Actualizar' : 'Guardar' }}
+        </button>
+        <button type="button" (click)="mostrarModal = false"
+          style="padding: 10px 18px; font-size: 14px; border: none; border-radius: 6px; cursor: pointer; background-color: #6c757d; color: white;">
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Componente que muestra la tabla de tareas -->
+<app-task-list  
+  [tareas]="tareas"  
+  (eliminar)="eliminarTarea($event)"  
+  (completar)="marcarComoCompletada($event)"
+  (editarTarea)="editarTarea($event)">
+</app-task-list>
